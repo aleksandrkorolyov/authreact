@@ -21,12 +21,11 @@ const Login = ({setToken}) => {
 
     const handleSubmit = async e => {
         e.preventDefault();
-        const token = await loginUser({
+        const user = await loginUser({
             email: username,
             password
         });
-        console.log(token)
-        setToken(token);
+        setToken(user.token);
     }
 
     return(
