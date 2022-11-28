@@ -1,24 +1,14 @@
 import './App.css';
-import React, { useState } from 'react';
+import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Dashboard from './components/Dashboard/Dashboard';
 import Preferences from './components/Preferences/Prefecences';
 import Login from './components/Login/Login'
-
-function setToken(userToken) {
-  sessionStorage.setItem('token', JSON.stringify(userToken))
-}
-
-function getToken() {
-
-  const tokenSring = sessionStorage.getItem('token')
-  const userToken = JSON.parse(tokenSring)
-  return userToken
-}
+import useToken from './components/App/useToken';
 
 function App() {
-  const token = getToken();
-  console.log(token)
+
+  const { token, setToken} = useToken();
 
   if(!token) {
     return <Login setToken={setToken} />
