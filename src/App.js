@@ -11,7 +11,7 @@ function App() {
 
   const { token, setToken} = useToken();
 
-  if(!token) {
+  if(!token && window.location.pathname != '/register') {
     return <Login setToken={setToken} />
   }
   
