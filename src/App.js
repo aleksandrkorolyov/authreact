@@ -5,6 +5,7 @@ import Dashboard from './components/Dashboard/Dashboard';
 import Preferences from './components/Preferences/Prefecences';
 import Login from './components/Login/Login'
 import useToken from './components/App/useToken';
+import Register from './components/Register/Register';
 
 function App() {
 
@@ -21,6 +22,7 @@ function App() {
         <Routes>
           <Route path="/dashboard" element={<Dashboard/>} />
           <Route path="/preferences" element={<Preferences/>} />
+          <Route path="/register" element={<Register/>} />
         </Routes>
       </BrowserRouter>
     </div>
