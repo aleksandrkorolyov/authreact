@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./Register.css"
 
-const Register = () => {    
+const Register = ({setToken}) => {    
 
     const [firstName, setFirstName] = useState();
     const [lastName, setLastName] = useState();
@@ -25,16 +25,17 @@ const Register = () => {
 
     const handleSubmit = async e => {
         e.preventDefault();
+        if(firstName && lastName && username && password) {
         const user = await registerUser({
             first_name: firstName,
             last_name: lastName,
             email: username,
             password
         });
-        localStorage.setItem('token', user.token)
-        console.log('Registred successfully');
-        setTimeout('', 10000);
+        setToken(user.token)
+
         window.location.href = '/dashboard'
+    }
     }
 
     async function registerUser(creds) {
@@ -57,22 +58,27 @@ const Register = () => {
         <div className="register-wrapper">
             <h1>Create new account</h1>
             <form onSubmit={handleSubmit}>
-                <label>
+                <label >
                     <p>First name</p>
+                    </label>
                     <input type="text" onChange={e => setFirstName(e.target.value)} />
-                </label>
+                    {!firstName && <span className="warn-notice">First name is required</span>}
+               
                 <label>
                     <p>Last name</p>
                     <input type="text" onChange={e => setLastName(e.target.value)} />
+                    {!lastName && <span className="warn-notice">Last name is required</span>}
                 </label>
                 
                 <label>
                     <p>Username (Email)</p>
                     <input type="text" onChange={e => setUserName(e.target.value)} />
+                    {!username && <span className="warn-notice">Email is required</span>}
                 </label>
                 <label>
                     <p>Password</p>
                     <input type="password" onChange={e => setPassword(e.target.value)} />
+                    {!password && <span className="warn-notice">Password is required</span>}
                 </label>
                 <div>
                     <button type="submit">Submit</button>

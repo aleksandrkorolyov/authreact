@@ -22,7 +22,7 @@ function App() {
         <Routes>
           <Route path="/dashboard" element={<Dashboard/>} />
           <Route path="/preferences" element={<Preferences/>} />
-          <Route path="/register" element={<Register/>} />
+          <Route path="/register" element={<Register setToken={setToken}/>} />
         </Routes>
       </BrowserRouter>
     </div>

@@ -7,3 +7,8 @@
 button {
     margin-top: 10px;
 }
+.warn-notice {
+    position: fixed;
+    margin-left: 10px;
+    color: rgb(255, 0, 0);
+}
